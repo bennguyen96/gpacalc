@@ -1,14 +1,14 @@
 import React from 'react';
-// import { Switch, Route } from 'react-dom';
-import Calculator from './containers/Calculator';
+import { Route, Switch } from 'react-router';
+import Home from './containers/Home';
 
 function App() {
   return (
     <main>
-      {/* <Switch>
-        <Route exact path="/" render={() => <Calculator />} />
-      </Switch> */}
-      <Calculator />
+      <Switch>
+        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/faq" render={() => <h1>TEST</h1>} />
+      </Switch>
     </main>
   );
 }
