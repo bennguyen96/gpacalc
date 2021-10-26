@@ -3,10 +3,9 @@ import Navbar from '../components/Navbar';
 import SubjectList from '../components/SubjectList';
 
 const Home = () => (
-  <div className="flex flex-col gap-10">
+  <div className="flex flex-col items-center justify-start gap-10">
     <Navbar />
-    <div className="flex flex-col items-center justify-start h-screen">
-
+    <div className="flex h-screen">
       <SubjectList />
     </div>
   </div>

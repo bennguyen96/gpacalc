@@ -7,7 +7,7 @@ function App() {
     <main>
       <Switch>
         <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/faq" render={() => <h1>TEST</h1>} />
+        <Route exact path="/faq" render={() => <Home />} />
       </Switch>
     </main>
   );
