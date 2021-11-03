@@ -23,7 +23,7 @@ const SubjectForm = ({ addSubject }) => {
   };
 
   return (
-    <form className="flex justify-start gap-5" onSubmit={handleSubmit}>
+    <form className="flex gap-10 justify-evenly m-5" onSubmit={handleSubmit}>
       <input
         type="text"
         value={subject.code}
@@ -41,7 +41,7 @@ const SubjectForm = ({ addSubject }) => {
         alt="Subject Name"
       />
       <input
-        type="text"
+        type="number"
         value={subject.score}
         onChange={(e) => setSubject((prevState) => ({
           ...prevState, score: e.target.value
@@ -57,14 +57,15 @@ const SubjectForm = ({ addSubject }) => {
         alt="Subject Grade"
       />
       <input
-        type="text"
+        type="number"
+        step="any"
         value={subject.creditPoints}
         onChange={(e) => setSubject((prevState) => ({
           ...prevState, creditPoints: e.target.value
         }))}
         alt="Subject Credit Points"
       />
-      <button type="submit">Add</button>
+      <button type="submit" className="bg-blue-600">Add</button>
     </form>
   );
 };
