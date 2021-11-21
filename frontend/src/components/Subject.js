@@ -1,20 +1,20 @@
 import React from 'react';
 
 const Subject = ({ subject }) => (
-  <div className="flex gap-5">
-    <div>
+  <div className="grid grid-cols-6 justify-items-stretch">
+    <div className="text-center">
       {subject.code}
     </div>
-    <div>
+    <div className="text-center">
       {subject.name}
     </div>
-    <div>
+    <div className="text-center">
       {subject.score}
     </div>
-    <div>
+    <div className="text-center">
       {subject.grade}
     </div>
-    <div>
+    <div className="text-center">
       {subject.creditPoints}
     </div>
   </div>

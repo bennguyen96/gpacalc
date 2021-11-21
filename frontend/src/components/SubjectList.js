@@ -1,48 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Subject from './Subject';
 import SubjectForm from './SubjectForm';
+import GpaCalculator from './GpaCalculator';
 
 const SubjectList = () => {
   const [subjects, setSubjects] = useState([]);
-  const [gpa, setGpa] = useState();
-
-  useEffect(() => {
-    if (subjects.length > 0) {
-      setGpa(subjects.map((subject) => subject.score)
-        .reduce((total, grade) => parseInt(total, 10) + parseInt(grade, 10)));
-    }
-  }, [subjects]);
 
   const addSubjectHandler = (subject) => {
-    // TODO: validation
     setSubjects((prevState) => ([
       ...prevState,
       subject
     ]));
   };
 
-  // const calculateGpa = (subjects) => {
-  //   let gpa = 0;
-  //   return gpa;
-  // }
-
   return (
-    <div className="flex flex-col gap-5 bg-gray-100 rounded-xl border-2 text-uni-blue border-uni-blue">
-      {gpa && (
-        <div>
-          AGGREGATE:
-          {gpa}
+    <div className="flex justify-center items-center">
+      <div className="flex flex-col gap-2 w-4/5 bg-gray-100 rounded-xl border-2 border-gray-100 shadow-md text-uni-blue">
+        <div className="grid grid-cols-6 gap-0 justify-items-stretch py-5 rounded-xl border-2 border-uni-blue">
+          <div className="text-center border-r-2 border-gray-200">Subject Code</div>
+          <div className="text-center border-r-2 border-gray-200">Subject Name</div>
+          <div className="text-center border-r-2 border-gray-200"> Score</div>
+          <div className="text-center border-r-2 border-gray-200">Grade</div>
+          <div className="text-center border-r-2 border-gray-200">Credit Points</div>
         </div>
-      )}
-      <div className="flex gap-10 justify-evenly">
-        <div className="pr-10 border-r-2 border-gray-200">Subject Code</div>
-        <div>Subject Name</div>
-        <div>Score</div>
-        <div>Grade</div>
-        <div>Credit Points</div>
+        {subjects.map((subject) => (
+          <div>
+            <Subject subject={subject} addSubject={addSubjectHandler} />
+            <hr />
+          </div>
+        ))}
+        <SubjectForm addSubject={addSubjectHandler} />
       </div>
-      {subjects.map((subject) => <Subject subject={subject} addSubject={addSubjectHandler} />)}
-      <SubjectForm addSubject={addSubjectHandler} />
+      {subjects.length > 0 && <GpaCalculator subjects={subjects} />}
     </div>
   );
 };
